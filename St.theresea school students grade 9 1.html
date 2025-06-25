@@ -1,0 +1,1901 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>St. Theresa School - Grade 9 Students</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+
+:root {
+  --primary-color: #1e293b;
+  --secondary-color: #38bdf8;
+  --accent-color: #4ade80;
+  --background: linear-gradient(135deg, #e0f7fa, #fff3e0);
+  --glass: rgba(255, 255, 255, 0.2);
+  --glass-dark: rgba(30, 41, 59, 0.6);
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --radius: 20px;
+  --text-color: #1e293b;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--background);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+header {
+  width: 100%;
+  max-width: 800px;
+  background: var(--primary-color);
+  color: white;
+  padding: 2rem;
+  border-radius: 0 0 var(--radius) var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+}
+
+.search-section {
+  margin-top: 2rem;
+  background: var(--glass);
+  backdrop-filter: blur(20px);
+  padding: 1rem 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.search-section input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius);
+  width: 240px;
+  background: white;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.05);
+}
+
+.search-section button {
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-color);
+  border: none;
+  color: white;
+  border-radius: var(--radius);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.search-section button {
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-color);
+  border: none;
+  color: white;
+  border-radius: var(--radius);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.search-section button:hover {
+  background: #22c55e;
+}
+.filter-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin: 10px auto 30px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  color: white;
+}
+
+.filter-btn.male { background-color: #2196f3; }
+.filter-btn.female { background-color: #e91e63; }
+.filter-btn.all { background-color: #4caf50; }
+
+.filter-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+
+.cards-wrapper {
+  margin: 2rem auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+  width: 90%;
+  max-width: 1300px;
+}
+
+.card-container {
+  position: relative;
+  padding-top: 90%;
+  perspective: 1000px;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: transform 0.3s;
+}
+
+.card-container:hover {
+  transform: translateY(-20px);
+}
+
+.card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  background-size: cover;
+  background-position: center;
+  backface-visibility: hidden;
+  transition: transform 0.7s ease;
+}
+
+.card-front {
+  background-color: #ffffff;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-back {
+  width: 100%;
+  height: 100%;
+  background: url('https://i.postimg.cc/sfKMzbMn/photo-2025-06-12-19-39-13.jpg') center/cover no-repeat;
+  border-radius: 12px;
+  transition: background-image 0.3s ease, transform 0.7s ease;
+}
+
+body.dark-mode .card-back {
+  background: url('https://i.postimg.cc/9MsVKqkn/Chat-GPT-Image-Jun-20-2025-08-15-32-AM.png') center/cover no-repeat;
+}
+
+.card-container.flipped .card-back {
+  transform: rotateY(180deg);
+}
+
+.card-container.flipped .card-front {
+  transform: rotateY(360deg);
+}
+
+.card-number {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  z-index: 1;
+}
+
+
+.info {
+  display: none;
+  position: absolute;
+  top: -90%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--glass-dark);
+  color: white;
+  padding: 1rem;
+  border-radius: var(--radius);
+  width: 250px;
+  font-size: 0.9rem;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(15px);
+}
+
+footer {
+  margin-top: auto;
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  width: 100%;
+  color: #444;
+  box-shadow: var(--shadow);
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  .search-section input {
+    width: 180px;
+  }
+  .cards-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}
+
+/* 🔒 Lock interaction before login */
+body.locked * {
+  pointer-events: none;
+}
+
+body.locked *:not(#loginOverlay):not(.login-box):not(input):not(button) {
+  pointer-events: none;
+}
+
+body.locked #loginOverlay,
+body.locked .login-box,
+body.locked input,
+body.locked button {
+  pointer-events: all !important;
+}
+
+/* 🪟 Login full-screen overlay */
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #1f4037, #99f2c8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(10px);
+  overflow: blur(10px);
+}
+
+/* 📦 Login box styling */
+.login-box {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  color: rgb(255, 255, 255);
+  width: 320px;
+  animation: fadeIn 0.6s ease;
+}
+
+.login-box h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.login-box p {
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  color: rgb(53, 230, 253);
+  font-size: 15px;
+}
+
+.login-box input::placeholder {
+  color: #2ea6dd;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #4fceb9;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.login-box button:hover {
+  background: #40dbce;
+}
+.login-message {
+  margin-top: 16px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Error (incorrect password) */
+.login-message.error {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: #fff;
+}
+
+/* Chart Container */
+
+
+.sort-dropdown {
+  display: block;
+  margin: 24px auto;
+  padding: 14px 20px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #868a8b;
+  width: 240px;
+
+  background: rgba(0, 245, 212, 0.08);
+  border: 1px solid rgba(0, 204, 255, 0.2);
+  border-radius: 35px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+
+  background-image: url("data:image/svg+xml,%3Csvg width='14' height='10' viewBox='0 0 10 6' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='white' stroke-width='2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 14px;
+  padding-right: 42px;
+
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.sort-dropdown:hover {
+  transform: scale(1.04);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.sort-dropdown option {
+  color: rgb(197, 184, 184);
+  font-weight: 500;
+}
+/* Chart Container */
+#chartContainer {
+  display: none;
+  text-align: center;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f5f7fa, #ffffff);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  max-width: 400px;
+  animation: fadeInChart 0.5s ease;
+}
+
+.chart-toggle {
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  margin: 15px auto;
+}
+
+.chart-toggle:hover {
+  background: linear-gradient(135deg, #5f0fc7, #1a63e0);
+  transform: scale(1.03);
+}
+
+
+
+
+
+
+
+/* Animation */
+@keyframes fadeInChart {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+body {
+  
+  color: #111;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode {
+  background: #121212;
+  color: #f0f0f0;
+}
+
+
+
+
+
+
+/* 🌓 Dark Mode Toggle Button */
+.dark-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ececec, #ddd);
+  color: #333;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.dark-toggle:hover {
+  background: linear-gradient(135deg, #ddd, #ccc);
+}
+
+/* Dark mode button styling when active */
+body.dark-mode .dark-toggle {
+  background: linear-gradient(135deg, #444, #222);
+  color: #fff;
+}
+
+body.dark-mode .dark-toggle:hover {
+  background: linear-gradient(135deg, #555, #333);
+}
+
+body.dark-mode #chartContainer {
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+}
+#textbookSection {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.97); /* Light mode background */
+  z-index: 9999;
+  padding: 40px 20px;
+  overflow-y: auto;
+}
+
+body.dark-mode #textbookSection {
+  background-color: rgba(18, 18, 18, 0.97); /* Dark mode background */
+  color: white;
+}
+
+.textbook-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.textbook-card {
+  background: #f1f5ff;
+  border-left: 6px solid #007bff;
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: 0.3s;
+}
+
+.textbook-card:hover {
+  background: #e5efff;
+  transform: translateY(-6px);
+}
+
+.textbook-card a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.textbook-card a:hover {
+  color: #0056b3;
+}
+
+/* 🌙 Dark mode support */
+body.dark-mode .textbook-card {
+  background: #202c3a;
+  border-left-color: #66b3ff;
+  color: #f0f0f0;
+}
+
+body.dark-mode .textbook-card a {
+  color: #66b3ff;
+}
+
+body.dark-mode .textbook-card a:hover {
+  color: #3399ff;
+   flex-direction: column;
+  gap: 8px;
+}
+
+
+.textbook-list {
+  max-width: 600px;
+  margin: 30px auto;
+  list-style: none;
+  font-size: 18px;
+  line-height: 2.2;
+  padding-left: 20px;
+}
+
+.textbook-list li a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+#navigationButtons button {
+  
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+ 
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+#quitBtn {
+  padding: 10px 18px;
+  font-size: 16px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(220, 53, 69, 0.3);
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+#quitBtn:hover {
+  background: linear-gradient(135deg, #c82333, #a71d2a);
+  box-shadow: 0 8px 20px rgba(220, 53, 69, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Optional alignment container */
+.quit-btn-wrapper {
+  text-align: right;
+  margin-top: 10px;
+}
+
+
+.textbook-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.textbook-card {
+  background: #f1f5ff;
+  border-left: 6px solid #007bff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  font-size: 16px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.textbook-card:hover {
+  background: #e5efff;
+  transform: translateY(-5px);
+}
+
+.textbook-actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 10px;
+}
+
+.download-btn,
+.open-btn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.download-btn {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+   gap: 20px;
+}
+
+.download-btn:hover {
+background: linear-gradient(135deg, #5f0fc7, #1a63e0);
+}
+
+.open-btn {
+  text-decoration: none;
+   background: linear-gradient(135deg, #42a5f5, #1976d2);
+  font-weight: 600;
+  transition: color 0.3s;
+   gap: 20px;
+}
+
+.open-btn:hover {
+background: linear-gradient(135deg, #64b5f6, #1565c0);
+}
+
+
+/* Dark Mode */
+body.dark-mode .textbook-card {
+  background: #202c3a;
+  border-left-color: #66b3ff;
+  color: #f0f0f0;
+}
+
+body.dark-mode .download-btn {
+  background-color: #3399ff;
+}
+
+body.dark-mode .download-btn:hover {
+  background-color: #1d7cd6;
+}
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.welcome-step-box {
+  background-color: white;
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  max-width: 90%;
+  width: 420px;
+  animation: scaleIn 0.4s ease;
+  transition: background 0.4s ease;
+}
+
+.welcome-step-box p {
+  font-size: 22px;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 24px;
+}
+
+#welcomeStepsOverlay.green .welcome-step-box {
+  background-color: #d4edda;
+  color: #48ff00;
+}
+
+#welcomeStepsOverlay.blue .welcome-step-box {
+  background-color: #d1ecf1;
+  color: #00aeff;
+}
+
+#welcomeStepsOverlay.red .welcome-step-box {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.welcome-step-box button {
+  background: linear-gradient(135deg, #007bff, #0056d2);
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.welcome-step-box button:hover {
+  background: linear-gradient(135deg, #0056d2, #003b99);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+/* CSS styles */
+#guidedOverlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  max-width: 320px;
+  font-size: 16px;
+  line-height: 1.6;
+  z-index: 10000;
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+#guidedOverlay::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px;
+  border-color: transparent transparent rgba(0, 0, 0, 0.85) transparent;
+  top: -20px;
+  left: 30px;
+}
+
+#guidedNextBtn {
+  margin-top: 12px;
+  background: linear-gradient(135deg, #2196f3, #1976d2);
+  color: #fff;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  pointer-events: auto;
+}
+
+#guidedNextBtn:hover {
+  background: linear-gradient(135deg, #1976d2, #0d47a1);
+  transform: scale(1.05);
+}
+
+.guided-highlight {
+  outline: 4px dashed #ffc107;
+  border-radius: 12px;
+  transition: outline 0.3s ease;
+  z-index: 9998;
+}
+.grade9-textbook-btn {
+display: block;
+  margin: 20px auto;
+  padding: 12px 24px;
+  font-size: 17px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #42a5f5, #1976d2);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(66, 165, 245, 0.4);
+  transition: all 0.3s ease;
+}
+
+.grade9-textbook-btn:hover {
+ background: linear-gradient(135deg, #64b5f6, #1565c0);
+  box-shadow: 0 6px 20px rgba(21, 101, 192, 0.4);
+  transform: translateY(-1px);
+}
+.welcome-back {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #28a745, #218838);
+  color: #fff;
+  padding: 20px 40px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.welcome-back.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.hidden {
+  display: none;
+}
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-box {
+  background: white;
+  color: #222;
+  padding: 30px 25px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+.intro-box p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.intro-box button {
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.intro-box button:hover {
+  background: #0056b3;
+}
+
+@keyframes fadeIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.link-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.intro-link-btn {
+  background-color: #0088cc;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.intro-link-btn:hover {
+  background-color: #006699;
+}
+.intro-btn.group {
+  display: inline-block;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(106, 17, 203, 0.3);
+  transition: all 0.3s ease;
+}
+
+.intro-btn.group:hover {
+  background: linear-gradient(135deg, #5f0fc7, #1a63e0);
+  box-shadow: 0 8px 24px rgba(95, 15, 199, 0.5);
+  transform: translateY(-2px);
+}
+
+.intro-btn.channel {
+  display: inline-block;
+  background: linear-gradient(135deg, #42a5f5, #1976d2);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(66, 165, 245, 0.3);
+  transition: all 0.3s ease;
+}
+
+.intro-btn.channel:hover {
+  background: linear-gradient(135deg, #64b5f6, #1565c0);
+  box-shadow: 0 8px 24px rgba(21, 101, 192, 0.5);
+  transform: translateY(-2px);
+}
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.8);
+  color: #444;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+footer a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+<div id="welcomeStepsOverlay" style="display: none;">
+  <div id="stepBox" class="welcome-step-box">
+    <p id="stepMessage">Welcome to Grade 9 Information</p>
+    <button id="stepNextBtn">Next</button>
+  </div>
+</div>
+<body>
+  <div id="introOverlay" class="intro-overlay" style="display: none;">
+  <div id="introBox" class="intro-box">
+    <p id="introMessage">Welcome to Grade 9 Student Portal 🎓</p>
+    
+    <div class="intro-links" id="introLinks" style="display: none;">
+      <a href="https://t.me/grade8studentsts" class="intro-link-btn" target="_blank">📘 Join Group</a>
+      <a href="https://t.me/grade9studentstschannel" class="intro-link-btn" target="_blank">📺 Join Channel</a>
+    </div>
+    
+    <button id="introNextBtn">Next</button>
+  </div>
+</div>
+
+
+
+  <div id="welcomeBackAnimation" class="welcome-back hidden">
+  🎉 Welcome back, Grade 9 heroes!
+</div>
+
+  <div id="guidedOverlay" class="guided-overlay" style="display: none;">
+  <div id="guidedMessageBox" class="guided-box">
+    <p id="guidedMessage">Message will go here...</p>
+    <button id="guidedNextBtn">OK</button>
+  </div>
+</div>
+   <input type="checkbox" id="dismiss" hidden>
+  <div class="overlay">
+
+  <div class="login-overlay" id="loginOverlay">
+  <div class="login-box">
+    <h2>👋 Welcome to St. Theresa Grade 9</h2>
+    <p>Please enter the password to continue</p>
+    <input type="password" id="password" placeholder="🔒 Enter password..." />
+    <button onclick="loginUser()">🔓 Login</button>
+    <div id="loginMessage" class="login-message"></div>
+
+    </div>
+    
+</div>
+   </div>
+  <div class="search-bar">
+  <!-- 👇 Filter buttons go here BELOW the search input -->
+
+
+</section>
+
+<button onclick="toggleDarkMode()" class="dark-toggle">🌙 Dark Mode</button>
+
+</div>
+
+  <header>
+    <h1>St. Theresa School - Grade 9</h1>
+  </header>
+
+ 
+  </div>
+
+ <button onclick="showTextbookSection()" class="grade9-textbook-btn">📚 Grade 9 Textbooks</button>
+
+ 
+</div>
+
+ <script></script>
+ 
+   <div class="search-section">
+    <input type="text" id="searchInput" placeholder="Serch students">
+  </div> You can search by Amharic and English
+<!-- 👇 Filter buttons go here BELOW the search input -->
+
+
+
+<p id="studentCount"></p>
+
+<!-- Chart button -->
+<button onclick="toggleGenderChart()" class="chart-toggle">
+  📊 Number of boys and girls
+</button>
+
+<!-- Chart container -->
+<div id="chartContainer" style="display: none;">
+  <canvas id="genderChart"></canvas>
+</div>
+<button id="backToTopBtn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" style="display: none; position: fixed; bottom: 20px; right: 20px; padding: 10px 15px; font-size: 16px; border: none; border-radius: 8px; background: #007bff; color: white; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">⬆️ back</button>
+</div>
+<div class="filter-buttons">
+  <button onclick="filterBy('male')" class="filter-btn male">👦 Boys</button>
+  <button onclick="filterBy('female')" class="filter-btn female">👧 Girls</button>
+  <button onclick="resetFilters()" class="filter-btn all">🔁 All</button>
+</div>
+<div class="cards-wrapper" id="cardsWrapper"></div> 
+  <div id="notFoundMessage" class="not-found-message" style="display: none;">No students found.</div>
+
+  <footer>
+  ቅድስት ትሬዛ ት/ቤት - ጥራት ያለው ትምህርት ለሁሉም!<br>
+  <a href="https://t.me/grade9studentstschannel" target="_blank">Telegram Channel</a> |
+ <a href="https://t.me/grade8studentsts" target="_blank">Telegram Group</a> |
+  <a href="#" onclick="showHelp()">Help</a> |
+  <a href="https://t.me/NOPEOPLECANGUESSME">Contact</a>
+</footer>
+<div id="helpOverlay" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); color: white; padding: 20px; z-index: 9999; overflow-y: auto;">
+  <div style="background: #222; padding: 20px; border-radius: 10px; max-width: 500px; margin: 50px auto;">
+    <h2>Help Guide</h2>
+    <p>✅ <strong>Search students:</strong> Type name, roll number, or exam number in the search bar to find a student.</p>
+    <p>✅ <strong>Filter:</strong> Use the Boys / Girls / All buttons to filter by gender.</p>
+    <p>✅ <strong>View chart:</strong> Click the chart button to see number of boys and girls.</p>
+    <p>✅ <strong>Textbooks:</strong> Click "📚 Grade 9 Textbooks" button to access or download books.</p>
+    <p>✅ <strong>Dark mode:</strong> Toggle 🌙 button to switch dark/light theme.</p>
+    <button onclick="hideHelp()" style="margin-top: 10px; padding: 10px 20px; border: none; background: #007bff; color: white; border-radius: 6px; font-weight: bold;">Close</button>
+  </div>
+</div>
+
+
+<section id="studentSection" class="page-section" style="display: block;">
+  <div class="cards-wrapper" id="cardsWrapper"></div>
+  <div id="notFoundMessage" style="text-align:center; color:red; display:none;">No students found.</div>
+</section>
+  
+<section id="textbookSection">
+  <div class="quit-btn-wrapper">
+    <button id="quitBtn" onclick="hideAllSections()">❌ Quit</button>
+  </div>
+  <h2 style="text-align:center;">📚 Grade 9 Textbooks</h2>
+
+ 
+<div class="textbook-grid">
+ <div class="textbook-grid">
+  <div class="textbook-card">
+    <strong>📘 Amharic Grade 9</strong>
+    <div class="textbook-actions">
+      <a href="https://drive.google.com/uc?export=download&id=12O7G_mzRs1sdQVXXpbrvi-smWTweU9gP" class="download-btn">📥 Download</a>
+      <a href="https://drive.google.com/file/d/12O7G_mzRs1sdQVXXpbrvi-smWTweU9gP/view?usp=sharing" class="open-btn" target="_blank">🌐 Open</a>
+    </div>
+  </div>
+  <div class="textbook-card">
+    <strong>📗 English Grade 9</strong>
+    <div class="textbook-actions">
+      <a href="https://drive.google.com/uc?export=download&id=15CEwoZFm6jYipL5sCJxDrWCQ8pPk0feQ" class="download-btn">📥 Download</a>
+      <a href="https://drive.google.com/file/d/15CEwoZFm6jYipL5sCJxDrWCQ8pPk0feQ/view" class="open-btn" target="_blank">🌐 Open</a>
+    </div>
+  </div>
+
+  <div class="textbook-card">
+    <strong>📘 Mathematics Grade 9</strong>
+    <div class="textbook-actions">
+      <a href="https://drive.google.com/uc?export=download&id=1n3laBT5EZwV3HeXrP7CTg-5o5NxORBQT" class="download-btn">📥 Download</a>
+      <a href="https://drive.google.com/file/d/1n3laBT5EZwV3HeXrP7CTg-5o5NxORBQT/view?usp=sharing" class="open-btn" target="_blank">🌐 Open</a>
+    </div>
+  </div>
+
+  <div class="textbook-card">
+    <strong>📙 Physics Grade 9</strong>
+    <div class="textbook-actions">
+      <a href="https://drive.google.com/uc?export=download&id=1nup-odQkaCPLQwenfU8XMbnvCnGq9WZk" class="download-btn">📥 Download</a>
+      <a href="https://drive.google.com/file/d/1nup-odQkaCPLQwenfU8XMbnvCnGq9WZk/view" class="open-btn" target="_blank">🌐 Open</a>
+    </div>
+  </div>
+
+  <div class="textbook-card">
+    <strong>📕 Chemistry Grade 9</strong>
+    <div class="textbook-actions">
+      <a href="https://drive.google.com/uc?export=download&id=1dXo2tcKMotSH7msnSjqimPz0GWsr-VH_" class="download-btn">📥 Download</a>
+      <a href="https://drive.google.com/file/d/1dXo2tcKMotSH7msnSjqimPz0GWsr-VH_/view" class="open-btn" target="_blank">🌐 Open</a>
+    </div>
+  </div>
+
+  <div class="textbook-card">
+    <strong>📒 Biology Grade 9</strong>
+    <div class="textbook-actions">
+      <a href="#" class="download-btn">📥 Download</a>
+      <a href="#" class="open-btn" target="_blank">🌐 Open</a>
+    </div>
+  </div>
+
+  <div class="textbook-card">
+    <strong>📔 Civics Grade 9</strong>
+    <div class="textbook-actions">
+      <a href="https://drive.google.com/uc?export=download&id=1WqdnnoIapJkHyv-ZxM_OYZNK2cWz6N3K" class="download-btn">📥 Download</a>
+      <a href="https://drive.google.com/file/d/1WqdnnoIapJkHyv-ZxM_OYZNK2cWz6N3K/view" class="open-btn" target="_blank">🌐 Open</a>
+    </div>
+  </div>
+
+  <div class="textbook-card">
+    <strong>📓 ICT Grade 9</strong>
+    <div class="textbook-actions">
+      <a href="https://drive.google.com/uc?export=download&id=1lLfW_hoRu84kgY_m_SljLPJ_V5hDCRkM" class="download-btn">📥 Download</a>
+      <a href="https://drive.google.com/file/d/1lLfW_hoRu84kgY_m_SljLPJ_V5hDCRkM/view" class="open-btn" target="_blank">🌐 Open</a>
+    </div>
+  </div>
+
+  <div class="textbook-card">
+    <strong>📘 Geography Grade 9</strong>
+    <div class="textbook-actions">
+      <a href="https://drive.google.com/uc?export=download&id=1uBjCz1yesrWG1PTfMk2T-__4KhRUpylH" class="download-btn">📥 Download</a>
+      <a href="https://drive.google.com/file/d/1uBjCz1yesrWG1PTfMk2T-__4KhRUpylH/view" class="open-btn" target="_blank">🌐 Open</a>
+    </div>
+  </div>
+
+  <div class="textbook-card">
+    <strong>📗 History Grade 9</strong>
+    <div class="textbook-actions">
+      <a href="https://drive.google.com/uc?export=download&id=1qtrNYeSU_0ZURVx4Fb4GMda2ENgoVPAY" class="download-btn">📥 Download</a>
+      <a href="https://drive.google.com/file/d/1qtrNYeSU_0ZURVx4Fb4GMda2ENgoVPAY/view" class="open-btn" target="_blank">🌐 Open</a>
+    </div>
+  </div>
+
+  <div class="textbook-card">
+    <strong>🎨 PVA (Performing & Visual Arts)</strong>
+    <div class="textbook-actions">
+      <a href="https://drive.google.com/uc?export=download&id=1EocMwYzPYLQGOTzrVQ0gmeXJXESlTAI7" class="download-btn">📥 Download</a>
+      <a href="https://drive.google.com/file/d/1EocMwYzPYLQGOTzrVQ0gmeXJXESlTAI7/view" class="open-btn" target="_blank">🌐 Open</a>
+    </div>
+  </div>
+
+  <div class="textbook-card">
+    <strong>💰 Economics Grade 9</strong>
+    <div class="textbook-actions">
+      <a href="https://drive.google.com/uc?export=download&id=1A_lpLOxw1BQMiAnTatBvAHLeYlOtLoU8" class="download-btn">📥 Download</a>
+      <a href="https://drive.google.com/file/d/1A_lpLOxw1BQMiAnTatBvAHLeYlOtLoU8/view" class="open-btn" target="_blank">🌐 Open</a>
+    </div>
+  </div>
+
+  <div class="textbook-card">
+    <strong>🏃‍♂️ HPE (Health & Physical Education)</strong>
+    <div class="textbook-actions">
+      <a href="https://drive.google.com/uc?export=download&id=1fUg9sJlJyuWQxiBpT4oGwh9A8v0irdsS" class="download-btn">📥 Download</a>
+      <a href="https://drive.google.com/file/d/1fUg9sJlJyuWQxiBpT4oGwh9A8v0irdsS/view" class="open-btn" target="_blank">🌐 Open</a>
+    </div>
+  </div>
+</div>
+
+  </div>
+  
+<footer>
+  ቅድስት ትሬዛ ት/ቤት - ጥራት ያለው ትምህርት ለሁሉም!<br>
+<a href="https://t.me/grade9studentstschannel" target="_blank">Telegram Channel</a> |
+  <a href="https://t.me/grade8studentsts" target="_blank">Telegram Group</a> |
+  <a href="#" onclick="showHelp()">Help</a> |
+  <a href="https://t.me/NOPEOPLECANGUESSME">Contact</a>
+</footer>
+  </div>
+
+</select>
+
+
+
+
+</select>
+
+</select>
+
+</select>
+
+</select>
+
+  
+  <script>
+  const studentsData = [      { id: 1, name: 'ሀሴት ደረጀ ወልደገብርኤል', englishName: 'Haset Dereje Weldegebriel', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/CLF2FQNz/image-2.png' },
+      { id: 2, name: 'ሀናን አብዱልማሊክ ጄይላ', englishName: 'Hanan Abdulmalik Jeyla', age: 13, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/3Rxyr7dt/photo-2025-06-16-07-14-29.jpg' },
+      { id: 3, name: 'ሀናን ጊኢደር ቃሲም', englishName: 'Hanan Giider Qasim', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/Vk4rxdNJ/photo-2025-06-16-07-22-38.jpg' },
+      { id: 4, name: 'ሀዊ ጀማል ሙሳ', englishName: 'Hawi Jemal Musa', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/zfcLf6K5/photo-2025-06-16-07-24-10.jpg' },
+      { id: 5, name: 'ሁበይብ ዘይኑ አባተ', englishName: 'Hubeyb Zeynu Abate', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/PJmN2qcr/photo-2025-06-16-07-25-19.jpg' },
+      { id: 6, name: 'ሄመን ይትባረክ ታዬ', englishName: 'Hemen Yitbarek Taye', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/7PXFT4bg/photo-2025-06-16-07-50-09.jpg' },
+      { id: 7, name: 'ሄኖን ጌታቸው ካሳ', englishName: 'Henon Getachew Kasa', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/HshFBtwn/photo-2025-06-16-07-51-48.jpg' },
+      { id: 8, name: 'ሊዲያ ሽፈራው ሀይሌ', englishName: 'Lidya Shiferaw Haile', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/pTRSpcHG/photo-2025-06-16-07-52-57.jpg' },
+      { id: 9, name: 'ሊዲያ ቴዎድሮስ ከበደ', englishName: 'Lidya Tewodros Kebede', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/dtpS8VFT/photo-2025-06-16-07-54-09.jpg' },
+      { id: 10, name: 'ልዑል ወንድፍራው ፍቃዱ', englishName: 'Leul Wendefraw Fikadu', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/SK7TFLMW/photo-2025-06-16-07-55-15.jpg' },
+      { id: 11, name: 'መሐመድ ኢድሪስ አደን', englishName: 'Muhammed Idris Aden', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/x87gytwS/photo-2025-06-16-07-56-20.jpg' },
+      { id: 12, name: 'መሀመድ ዲምራኤል ሀምዳኤል', englishName: 'Muhammed Dimrael Hamdael', age: 16, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/13DMw0ML/photo-2025-06-16-07-57-21.jpg' },
+           { id: 13, name: 'ሙሀሙድ በሺር ሻፊ', englishName: 'Muhammed Beshir Shafi', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/4dx1DDZg/photo-2025-06-16-07-58-22.jpg' },
+      { id: 14, name: 'መሊካ ቃሲም ርጋ', englishName: 'Melika Qasim Rega', age: 16, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/C5Zs1bzr/photo-2025-06-16-07-59-16.jpg' },
+      { id: 15, name: 'መና ታደሰ አርጋው', englishName: 'Mena Tadesse Argaw', age: 16, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/1RTKd7jk/photo-2025-06-16-08-00-14.jpg' },
+      { id: 16, name: 'መፅሔት አዲስ ፀጋዬ', englishName: 'Metsihit Addis Tsegaye', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/qvDh82Dp/photo-2025-06-16-09-11-14.jpg' },
+      { id: 17, name: 'ሙስተቂም አብዱላሂ አደም', englishName: 'Mustekim Abdullahi Adem', age: 13, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/ZRC1WzBT/photo-2025-06-16-09-19-11.jpg' },
+      { id: 18, name: 'ሙስተቂማ አብዱሰላም አህመድ', englishName: 'Mustekima Abduselam Ahmed', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/fysj6xh6/photo-2025-06-16-09-20-42.jpg' },
+      { id: 19, name: 'ማህሌት አንድነት አየለ', englishName: 'Mahlet Andinet Ayale', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/4NBbS72S/photo-2025-06-16-09-21-43.jpg' },
+      { id: 20, name: 'ማረፊያ ተስፋዬ በላቸው', englishName: 'Marefiya Tesfaye Belachew', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/wjr56Kp5/photo-2025-06-16-09-22-51.jpg' },
+      { id: 21, name: 'ማክቤል አብዱ አብዱረኡፍ', englishName: 'Makbel Abdu Abdurauf', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/W3G06hJS/photo-2025-06-16-09-23-54.jpg' },
+      { id: 22, name: 'ሜሮን ገዛኸኝ ጌታቸው', englishName: 'Meron Gezachegn Getachew', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/FRVJk82B/photo-2025-06-16-09-25-12.jpg' },
+      { id: 23, name: 'ሠላም አንሙት ጋሹ', englishName: 'Selam Anmut Gashu', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/yNqJQ7KG/photo-2025-06-16-09-26-01.jpg' },
+      { id: 24, name: 'ሰልማ ዩሱፍ መሀመድ', englishName: 'Selma Yusuf Muhammed', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/QNndYjkq/photo-2025-06-16-09-27-26.jpg' },
+      { id: 25, name: 'ሲሀን ዚያድ አብዱማሊክ', englishName: 'Sihan Ziyad Abdulmalik', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/rwRjRygZ/photo-2025-06-16-09-31-55.jpg' },
+      { id: 26, name: 'ሳሊም ዩሱፍ መሃመድ', englishName: 'Salim Yusuf Muhammed', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/PxJPNJQP/photo-2025-06-16-09-33-55.jpg' },
+      { id: 27, name: 'ሳሌም የኋላሸት በዳሶ', englishName: 'Salem Yehwalashet Bedaso', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/C5FSrLcw/photo-2025-06-16-10-53-38.jpg' },
+      { id: 28, name: 'ሳሙኤል የሻነው አለሙ', englishName: 'Samuel Yeshanew Alemu', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/vBTvrWsy/photo-2025-06-16-10-57-43.jpg' },
+      { id: 29, name: 'ሳሮን መክብብ ብርሃኑ', englishName: 'Saron Mekbib Birhanu', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/qqnDK8sR/photo-2025-06-16-10-58-57.jpg' },
+      { id: 30, name: 'ሳሮን በሀይሉ ደርሶ', englishName: 'Saron Behalu Derso', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/kGFF9wNx/photo-2025-06-16-11-00-05.jpg' },
+      { id: 31, name: 'ሶሊያና ደረጀ ከፍያለው', englishName: 'Soliyana Dereje Kefyalew', age: 16, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/nhLYb4XD/photo-2025-06-16-11-01-28.jpg' },
+      { id: 32, name: 'ሶልያና ናትናኤል አሰፋ', englishName: 'Soliyana Natnael Assefa', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/W4BMkxXG/photo-2025-06-16-11-02-24.jpg' },
+      { id: 33, name: 'ሶልያና ከተማ ታምሩ', englishName: 'Soliyana Ketema Tamiru', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/kGnRNC8b/photo-2025-06-16-11-03-13.jpg' },
+      { id: 34, name: 'ሩሽዳ ሳዲቅ ኡስማኤል', englishName: 'Rushda Sadiq Usmael', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/T3Zy7ggG/photo-2025-06-16-11-04-05.jpg' },
+      { id: 35, name: 'ራኬብ ሳምሶን ደምሴ', englishName: 'Rakeb Samson Demse', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/1Xfs1Y1d/photo-2025-06-16-11-05-03.jpg' },
+      { id: 36, name: 'ራኬብ ዮናስ ደጉ', englishName: 'Rakeb Yonass Degu', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/MpbkN8jT/photo-2025-06-16-11-06-41.jpg' },
+      { id: 37, name: 'ራኬብ ጌታቸው መታፈሪያ', englishName: 'Rakeb Getachew Metafariya', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/Dzp7pKtG/photo-2025-06-16-11-07-56.jpg' },
+      { id: 38, name: 'ቅዱስ አለኸኝ ስለሺ', englishName: 'Kidus Alekegn Sileshi', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/ZKz4MHDw/photo-2025-06-16-11-08-52.jpg' },
+      { id: 39, name: 'ቅዱስ ወንደሰን ጋሻው', englishName: 'Kidus Wendesen Gashaw', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/HLNC49y4/photo-2025-06-16-11-09-42.jpg' },
+      { id: 40, name: 'በአምላክ ውብዬ ተሰማ', englishName: 'Beamlak Wubie Tesema', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/XqfSW-MDQ/photo-2025-06-16-11-10-23.jpg' },
+      { id: 41, name: 'በእምነት ካሳሁን አበበ', englishName: 'Beemnet Kasahun Abebe', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/x8ShtxTH/photo-2025-06-16-11-11-14.jpg' },
+      { id: 42, name: 'ቢላል ሙስጠፋ ጀማል', englishName: 'Bilal Mustefa Jemal', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/Dz9MwjGD/photo-2025-06-16-11-12-02.jpg' },
+      { id: 43, name: 'ባህራን አበራ ለማ', englishName: 'Bahiran Abera Lema', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/rprf31H9/photo-2025-06-16-11-12-52.jpg' },
+      { id: 44, name: 'ባስልኤል አወቀ ለገሰ', englishName: 'Baseliel Awoke Legese', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/y6PvMYL2/photo-2025-06-16-11-13-45.jpg' },
+      { id: 45, name: 'ቤተሳይዳ ሲሣይ ጉግሳ', englishName: 'Betesayda Sisay Gugsa', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/FFW0bfWF/photo-2025-06-16-11-14-32.jpg' },
+      { id: 46, name: 'ቤቴልሔም ሽመልስ ግዛው', englishName: 'Betelhem Shumelis Gizaw', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/Twk5cScN/photo-2025-06-16-11-15-25.jpg' },
+      { id: 47, name: 'ቤቴልሔም ቴዎድሮስ', englishName: 'Betelhem Tewodros', age: 18, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/g29X43vp/photo-2025-06-16-11-16-20.jpg' },
+      { id: 48, name: 'ቤኒያስ ተስፋዬ ተፈራ', englishName: 'Beniyas Tesfaye Tefera', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/MHMHmGHX/photo-2025-06-16-11-17-15.jpg' },
+      { id: 49, name: 'ብሌን ተፈሪ ሙሉጌታ', englishName: 'Blen Teferi Mulugeta', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/8CpCn4c2/photo-2025-06-16-11-18-07.jpg' },
+      { id: 50, name: 'ብሌን እንግዳ አለም', englishName: 'Blen Engida Alem', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/d0VyTw2Z/photo-2025-06-16-11-18-52.jpg' },
+      { id: 51, name: 'ብስራት ሐብታሙ ታደሰ', englishName: 'Bisrat Habtamu Tadesse', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/j25GCn1D/photo-2025-06-16-15-18-56.jpg' },
+      { id: 52, name: 'ብሩክነው ማርሸት ተስፋዬ', englishName: 'Biruknew Marshet Tesfaye', age: 16, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/MTr9PPsG/photo-2025-06-16-15-20-41.jpg' },
+      { id: 53, name: 'ትንቢት በለጠ ወርቁ', englishName: 'Tinbit Belete Worku', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/4NpryGLb/photo-2025-06-16-15-23-03.jpg' },
+      { id: 54, name: 'ቶማስ ስንታየሁ በቀለ', englishName: 'Thomas Sintayehu Bekele', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/T1gHKj9Y/photo-2025-06-16-15-24-19.jpg' },
+      { id: 55, name: 'ነጃ ኤርሚያስ ይሳቅ', englishName: 'Neja Ermiyas Yisak', age: 16, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/7YrWpcHC/photo-2025-06-16-15-25-15.jpg' },
+      { id: 56, name: 'ነፃነት ግዛቸው አዘነ', englishName: 'Netsanet Gizachew Azene', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/GtLsDdP8/photo-2025-06-16-15-26-17.jpg' },
+      { id: 57, name: 'ኑራን አሪፍ ዘይዳን', englishName: 'Nuran Arif Zeydan', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/kMSnQkYD/photo-2025-06-16-15-27-22.jpg' },
+      { id: 58, name: 'ናሂላ አዳነ ቢረሳ', englishName: 'Nahila Adane Birrsa', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/43p5b4cB/photo-2025-06-16-15-29-58.jpg' },
+      { id: 59, name: 'ናሆም አንተነህ ቸርነት', englishName: 'Nahom Anteneh Cherenet', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/VLSXWLQn/photo-2025-06-16-15-31-20.jpg' },
+      { id: 60, name: 'ናታን ሰለሞን ማሞ', englishName: 'Natan Solomon Mamo', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/kGL6pK38/photo-2025-06-16-15-32-16.jpg' },
+  { id: 61, name: 'ናታን አለማየሁ ሞላ', englishName: 'Natan Alemayehu Mola', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/W3Hhdg4K/photo-2025-06-16-15-33-18.jpg' },
+{ id: 62, name: 'ናትናኤል ባይሳ አለሙ', englishName: 'Natnael Baysa Alemu', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/ht18fZR5/photo-2025-06-16-15-34-26.jpg' },
+{ id: 63, name: 'ናኦድ ሠለሞን ወርቁ', englishName: 'Naod selemon werku', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/0yj2ZG8k/photo-2025-06-16-15-35-19.jpg' },
+{ id: 64, name: 'ናዮሚ ወጋየው ንጉሴ', englishName: 'Naomi Wegayehu Neguse', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/NM9r7pZY/photo-2025-06-16-15-36-39.jpg' },
+{ id: 65, name: 'ንፍታሌም ዘመድኩን አጥናፉ', englishName: 'Nphtalem ZemedkunAtnafu', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/wjqyb6nw/photo-2025-06-16-15-37-39.jpg' },
+{ id: 66, name: 'አላዛር ዘውዱ ለማ', englishName: 'Elazar Zewdu Lema', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/Y0x21F2M/photo-2025-06-16-15-38-43.jpg' },
+{ id: 67, name: 'አሚር ሙራድ አብዶ', englishName: 'Amir Murad Abdo', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/dVfsmwFk/photo-2025-06-16-15-39-35.jpg' },
+{ id: 68, name: 'አማኑኤል ሰሙንጉስ ወልደስላሴ', englishName: 'Emmanuel Semungus Woldeselassie', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/zBZq67Vq/photo-2025-06-16-15-40-36.jpg' },
+{ id: 69, name: 'አማኑኤል ገብረህይወት ወስላሴ', englishName: 'Emmanuel Gebrehiywet Wossenie', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/X7H444pH/photo-2025-06-16-15-41-29.jpg' },
+{ id: 70, name: 'አማናዊት ብርሀነ በቀለ', englishName: 'Amanawit Birhane Bekele', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/g21pLsy3/photo-2025-06-16-15-42-18.jpg' },
+{ id: 71, name: 'አማናዊት ቴዎድሮስ አምዴ', englishName: 'Amanawit Tewodros Amde', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/Dw4khsV0/photo-2025-06-16-15-43-20.jpg' },
+{ id: 72, name: 'አስቤል ቢኒያም አየሁ', englishName: 'Asbel Binyam Ayehu', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/0jXFR5c7/photo-2025-06-16-15-45-04.jpg' },
+{ id: 73, name: 'አቡበከር ፀጋዬ ዋሲሁን', englishName: 'Abubeker Tsegaye Wasilhun', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/SNXtYhgt/photo-2025-06-16-15-46-03.jpg' },
+{ id: 74, name: 'አብዱላሂ ሀሰን አብዱላሂ', englishName: 'Abdullahi Hassen Abdullahi', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/hGM03yCd/photo-2025-06-16-15-47-51.jpg' },
+{ id: 75, name: 'አዳም ዘመዴ የሺጥላ', englishName: 'Adam Zemede Yeshitila', age: 16, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/26K7CqNj/photo-2025-06-16-15-48-36.jpg' },
+  { id: 76, name: 'አዶኒያስ ወንዱ ግርማ', englishName: 'Adoniyas Wondu Girma', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/VstKzRv3/photo-2025-06-16-15-49-26.jpg' },
+{ id: 77, name: 'አፍናን አፈንዲ ዩሱፍ', englishName: 'Afnan Afendi Yusuf', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/Hngjr02H/photo-2025-06-17-20-32-34.jpg' },
+      { id: 78, name: 'አፎሚያ ሚካኤል ወርቁ', englishName: 'Aphomia Mikael Worku', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/DfXNr9rB/photo-2025-06-17-20-33-54.jpg' },
+      { id: 79, name: 'አፎሚያ ሰላም ክበበው', englishName: 'Aphomia Selam Kibebew', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/6pmV13wR/photo-2025-06-17-20-40-15.jpg' },
+      { id: 80, name: 'ኢምራን አብዱልአዚዝ አሊዩ', englishName: 'Imran Abdulaziz Aliyu', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/X7Dynzh6/photo-2025-06-17-20-41-33.jpg' },
+      { id: 81, name: 'ኢክማን አብዶ አሊ', englishName: 'Ikman Abdo Ali', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/wvZTSCMw/photo-2025-06-17-20-42-22.jpg' },
+      { id: 82, name: 'ኢዛና ደጀኔ ካሳ', englishName: 'Izana Dejene Kasa', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/26bCF0Gh/photo-2025-06-17-20-43-48.jpg' },
+      { id: 83, name: 'ኢዮሲያስ አለሙ ለቤቶ', englishName: 'Iyosyas Alemu Lebeto', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/9fHPjkRF/photo-2025-06-17-20-44-40.jpg' },
+      { id: 84, name: 'ኤሊያና መሳይ ተክሉ', englishName: 'Eliana Mesay Teklu', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/J00ZqVgK/photo-2025-06-17-20-45-27.jpg' },
+      { id: 85, name: 'ኤልቤተል ተፈሪ መኮንን', englishName: 'Elbetel Teferi Mekonnen', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/vBq6D2Bn/photo-2025-06-17-20-46-35.jpg' },
+      { id: 86, name: 'ኤልቤት ዳንኤል ተሾመ', englishName: 'Elbet Daniel Teshome', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/Nj69RjFB/photo-2025-06-17-20-47-20.jpg' },
+      { id: 87, name: 'ኤልያና ሳምሶን ታዬ', englishName: 'Eliana Samson Taye', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/jqB4XCx7/photo-2025-06-17-20-48-04.jpg' },
+      { id: 88, name: 'ኤልዳና መኳንንት ዘውዴ', englishName: 'Eldana Mekonnen Zewude', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/26DfhCqR/photo-2025-06-17-20-48-48.jpg' },
+      { id: 89, name: 'ኤደን ማንያዘዋል ከበደ', englishName: 'Eden Manyazewal Kebede', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/63jYw0xj/photo-2025-06-17-20-49-33.jpg' },
+      { id: 90, name: 'ኤዶት ሽብሩ ተሰማ', englishName: 'Edot Shibru Tesema', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/vZYh1k8q/photo-2025-06-17-20-50-16.jpg' },
+      { id: 91, name: 'እስራኤል ሀይሉ ሁንዴ', englishName: 'Israel Hailu Hunde', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/L4j3x2nQ/photo-2025-06-17-20-51-01.jpg' },
+      { id: 92, name: 'እዩኤል መላኩ ተካ', englishName: 'Eyuel Melaku Teka', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/brRbpYnz/photo-2025-06-17-20-51-45.jpg' },
+      { id: 93, name: 'ኦርዮን የትሻወርቅ ደጀኔ', englishName: 'Orion Yeteshawerk Dejene', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/X7VdxFMX/photo-2025-06-17-20-52-29.jpg' },
+      { id: 94, name: 'ካሌብ እንዳለ ደበላ', englishName: 'Kaleb Endale Debela', age: 16, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/nhXsw-G3V/photo-2025-06-17-20-53-14.jpg' },
+      { id: 95, name: 'ኬብሮን ስዩም ውብሸት', englishName: 'Hebron Siyum Wubshet', age: 16, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/b80nV6m5/photo-2025-06-17-20-54-19.jpg' },
+      { id: 96, name: 'ኬብሮን ኢሳያስ ሀይሉ', englishName: 'Hebron Esayas Hailu', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/W1q37b4h/photo-2025-06-17-20-55-09.jpg' },
+      { id: 97, name: 'ዘፀአት ፍሬው አድማሱ', englishName: 'ZeTseAt Frew Admasu', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/V6gLNJKH/photo-2025-06-17-20-56-01.jpg' },
+      { id: 98, name: 'ዚክራ ባህሩዲን ዩሱፍ', englishName: 'Zikra Baharudin Yusuf', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/4NmNJNVB/photo-2025-06-17-20-56-46.jpg' },
+      { id: 99, name: 'ዝማሬ ዳዊት ሞገስ', englishName: 'Zimare Dawit Moges', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/FRHXDDxD/photo-2025-06-17-20-57-37.jpg' },
+      { id: 100, name: 'የአብስራ ታሪኩ ፋንታሁን', englishName: 'YeAbsira Tariku Fantahun', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/K87Xbdq0/photo-2025-06-17-20-58-29.jpg' },
+      { id: 101, name: 'የእውነት ምስክር አበበ', englishName: 'Yewunet Miskir Abebe', age: 14, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/FzkqBqkg/photo-2025-06-17-20-59-09.jpg' },
+      { id: 102, name: 'ዩስራ ሁሴን ሰማን', englishName: 'Yusra Hussen Saman', age: 16, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/MpYW5MSZ/photo-2025-06-17-20-59-51.jpg' },
+      { id: 103, name: 'ያቤፅ አክሊሉ ጥበበ', englishName: 'Yabets Aklilu Tibebe', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/1z5yjmmG/photo-2025-06-17-21-00-37.jpg' },
+      { id: 104, name: 'ያብፀጋ ሔኖክ ነጋ', englishName: 'Yabetsega Henok Nega', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/Ghwd1J3h/photo-2025-06-17-21-01-26.jpg' },
+      { id: 105, name: 'ያፌት ዘመዴ ከበደ', englishName: 'Yafet Zemede Kebede', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/d38M0pQQ/photo-2025-06-17-21-02-20.jpg' },
+      { id: 106, name: 'ይዲድያ መኮንን ደምሴ', englishName: 'Yedidya Mekonnen Demse', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/ht4FS2kg/photo-2025-06-17-21-03-03.jpg' },
+     { id: 107, name: 'ዮሀና ሰብስቤ ዘሪሁን', englishName: 'Yohana Sebsibe Zerihun', age: 13, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/RZ1cTRh3/photo-2025-06-17-21-22-01.jpg' },
+      { id: 108, name: 'ዮሴፍ መሀሪ ይማም', englishName: 'Yosef Mehari Yimam', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/k4LcH5mD/photo-2025-06-17-21-23-02.jpg' },
+      { id: 109, name: 'ዳግም ረታ ሽመልስ', englishName: 'Dagem Reta Shemels', age: 15, gender: 'ወንድ', imageUrl: 'https://i.postimg.cc/Z5JL2g1P/photo-2025-06-17-21-23-43.jpg' },
+      { id: 110, name: 'ገሊላ መስፍን ከበደ', englishName: 'Galila Mesfin Kebede', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/T1rrHq0H/photo-2025-06-17-21-24-26.jpg' },
+      { id: 111, name: 'ገሊላ ተስፋዬ አበበ', englishName: 'Galila Tesfaye Abebe', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/50zv6qhN/photo-2025-06-17-21-25-18.jpg' },
+      { id: 112, name: 'ጰኒኤል ወንደሰን ጀንበሬ', englishName: 'Peniel Wondesen Jenbere', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/MGCf2fnk/photo-2025-06-17-21-26-20.jpg' },
+      { id: 113, name: 'ፂዮን ይልሙ ደሳለኝ', englishName: 'Tsiyon Yilmu Desalegn', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/nrkXDd0Z/photo-2025-06-17-21-27-12.jpg' },
+      { id: 114, name: 'ፅኑቃል ደመቀ ወጋየሁ', englishName: 'Tsnukal Demeke Wegayehu', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/nLDMkV03/photo-2025-06-17-21-27-58.jpg' },
+      { id: 115, name: 'ፊክራ ሀምዛ ሙክታር', englishName: 'Fikra Hamza Muktar', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/FsHR6VTd/photo-2025-06-17-21-28-54.jpg' },
+      { id: 116, name: 'ፌቨን ሳሙኤል ይልማ', englishName: 'Feven Samuel Yilma', age: 14, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/CxZKhLTw/photo-2025-06-17-21-29-42.jpg' },
+      { id: 117, name: 'ዮሀና ሰርክአለም ሲሳይ', englishName: 'Yohana Serkialem Sisay', age: 15, gender: 'ሴት', imageUrl: 'https://i.postimg.cc/C5LFWwsT/photo-2025-06-17-21-30-49.jpg' },
+    
+    ];
+    
+
+document.getElementById('studentCount').textContent = `Total students: ${studentsData.length}`;
+
+
+window.addEventListener('scroll', function() {
+  document.getElementById('backToTopBtn').style.display = window.scrollY > 200 ? 'block' : 'none';
+});
+
+  function showHelp() {
+  document.getElementById('helpOverlay').style.display = 'block';
+}
+function hideHelp() {
+  document.getElementById('helpOverlay').style.display = 'none';
+}
+
+const introSteps = [
+  
+  ` Join grade 9 sts Group and Channel:
+    <div class="intro-links">
+      <a href="https://t.me/grade8studentsts" class="intro-btn group" target="_blank">👥 Join Group</a>
+      <a href="https://t.me/grade9studentstschannel" class="intro-btn channel" target="_blank">📢 Join Channel</a>
+    </div>`,
+
+];
+
+let step = 0;
+
+function showIntroStep() {
+  const box = document.getElementById('introBox');
+  box.innerHTML = introSteps[step]; // Use innerHTML, not textContent
+}
+
+document.getElementById('introNextBtn').addEventListener('click', () => {
+ 
+  step++;
+  if (step < introSteps.length) {
+    showIntroStep();
+  } else {
+    document.getElementById('introOverlay').style.display = 'none';
+  }
+});
+
+window.onload = showIntroStep;
+
+
+function showIntroIfFirstTime() {
+  const seenIntro = localStorage.getItem('seenIntro');
+  if (seenIntro) return;
+
+  const overlay = document.getElementById('introOverlay');
+  const message = document.getElementById('introMessage');
+  const nextBtn = document.getElementById('introNextBtn');
+  let step = 0;
+
+  overlay.style.display = 'flex';
+  message.innerHTML = introSteps[step];
+
+
+  nextBtn.onclick = () => {
+    step++;
+    if (step < introSteps.length) {
+      message.textContent = introSteps[step];
+      if (step === introSteps.length - 1) nextBtn.textContent = "Got It!";
+    } else {
+      overlay.style.display = 'none';
+      localStorage.setItem('seenIntro', 'true');
+    }
+  };
+}
+
+window.addEventListener('DOMContentLoaded', showIntroIfFirstTime);
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('textbookSection').style.display = 'none';
+
+  window.showStudentSection = function () {
+    document.getElementById('studentSection').style.display = 'block';
+    document.getElementById('textbookSection').style.display = 'none';
+    if (typeof renderCards === 'function') {
+      renderCards(studentsData);
+    }
+  }
+
+  window.showTextbookSection = function () {
+    document.getElementById('studentSection').style.display = 'none';
+    document.getElementById('textbookSection').style.display = 'block';
+  }
+
+  
+});
+window.hideAllSections = function () {
+    textbookSection.style.display = 'none';
+    document.getElementById('studentSection').style.display = 'block';
+  }
+
+
+function sortBy(field) {
+  const sorted = [...studentsData].sort((a, b) => {
+    if (field === 'age') return a.age - b.age;
+    if (field === 'gender') return a.gender.localeCompare(b.gender);
+    return 0;
+  });
+  renderCards(sorted);
+}
+
+function toggleDarkMode() {
+  document.body.classList.toggle('dark-mode');
+
+  const isDark = document.body.classList.contains('dark-mode');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+
+  const toggleBtn = document.querySelector('.dark-toggle');
+  toggleBtn.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+}
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') {
+    document.body.classList.add('dark-mode');
+    const toggleBtn = document.querySelector('.dark-toggle');
+    if (toggleBtn) toggleBtn.textContent = '☀️ Light Mode';
+  }
+});
+
+  let genderChartInstance;
+
+  function toggleGenderChart() {
+    const container = document.getElementById('chartContainer');
+    container.style.display = container.style.display === 'none' ? 'block' : 'none';
+
+    if (!genderChartInstance) {
+      const boys = studentsData.filter(s => s.gender === 'ወንድ').length;
+      const girls = studentsData.filter(s => s.gender === 'ሴት').length;
+      const total = boys + girls;
+      const ctx = document.getElementById('genderChart').getContext('2d');
+
+      genderChartInstance = new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: ['👦 Boys', '👧 Girls'],
+          datasets: [{
+            data: [boys, girls],
+            backgroundColor: ['#42a5f5', '#ef5350'],
+            borderColor: '#fff',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              labels: { font: { size: 14 } }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context) {
+                  const count = context.raw;
+                  const percent = ((count / total) * 100).toFixed(1);
+                  return `${context.label}: ${count} (${percent}%)`;
+                }
+              }
+            },
+            datalabels: {
+              color: '#fff',
+              font: {
+                weight: 'bold',
+                size: 13
+              },
+              formatter: function(value, context) {
+                const percent = ((value / total) * 100).toFixed(1);
+                return `${value} (${percent}%)`;
+              }
+            }
+          }
+        },
+        plugins: [ChartDataLabels]
+      });
+    }
+  }
+function loginUser() {
+  const password = document.getElementById('password').value.trim();
+  const messageBox = document.getElementById('loginMessage');
+  const correctPassword = "18481848";
+
+  if (password === correctPassword) {
+    messageBox.textContent = "✅ Welcome!";
+    messageBox.className = "login-message success";
+    // Show welcome animation
+const welcomeAnim = document.getElementById('welcomeBackAnimation');
+welcomeAnim.classList.remove('hidden');
+setTimeout(() => {
+  welcomeAnim.classList.add('show');
+}, 100);
+
+// Hide after 3 seconds
+setTimeout(() => {
+  welcomeAnim.classList.remove('show');
+  setTimeout(() => {
+    welcomeAnim.classList.add('hidden');
+  }, 500);
+}, 3000);
+
+document.getElementById('loginOverlay').style.display = 'none';
+document.getElementById('welcomeStepsOverlay').style.display = 'flex';
+showWelcomeSteps();
+
+  } else {
+    messageBox.textContent = "❌ Incorrect password.";
+    messageBox.className = "login-message error";
+  }
+}
+
+
+function showWelcomeSteps() {
+  const messages = [
+    { text: '✅ Welcome to Grade 9 Informations', theme: 'green' },
+    { text: '📚 We have Textbooks and Student Informations', theme: 'blue' },
+    { text: '🚫 This site is only for Grade 9 Students of St. Theresa please do not share to other school students', theme: 'red' }
+  ];
+
+  let step = 0;
+  const overlay = document.getElementById('welcomeStepsOverlay');
+  const box = document.getElementById('stepBox');
+  const msg = document.getElementById('stepMessage');
+  const btn = document.getElementById('stepNextBtn');
+
+  updateStep();
+
+  btn.onclick = () => {
+    step++;
+    if (step < messages.length) {
+      updateStep();
+      btn.textContent = step === messages.length - 1 ? 'Got It' : 'Next';
+    } else {
+      overlay.style.display = 'none';
+      document.body.classList.remove('locked');
+
+      // ✅ 🔽 INSERT THIS HERE:
+      startGuidedTutorial();
+    }
+  };
+
+  function updateStep() {
+    overlay.className = `welcome-overlay ${messages[step].theme}`;
+    msg.textContent = messages[step].text;
+  }
+}
+function startGuidedTutorial() {
+  const steps = [
+    {
+      message: '📚 This is the Textbook section. You can download or open Grade 9 textbooks.',
+      selector: '.grade9-textbook-btn',
+      
+    },
+    {
+      message: '🧒 This is a student card. Click to view the student\'s name, age, and photo.',
+      selector: '.card-container'
+    },
+    {
+      message: '🔍 This is the search bar. Type here to find students.',
+      selector: '#searchInput'
+    },
+    {
+      message: '🚻 Use these buttons to filter by boys or girls.',
+      selector: '.filter-btn.male, .filter-btn.female'
+     },
+    {
+     
+  message: '📊 Click this button to view how many boy and girl.',
+  selector: '.chart-toggle',
+    },
+    {
+      message: '🌑 This is the dark mode button. Click to switch to dark background.',
+      selector: '.dark-toggle'
+    }
+  ];
+
+  let step = 0;
+  const overlay = document.getElementById('guidedOverlay');
+  const msgBox = document.getElementById('guidedMessage');
+  const nextBtn = document.getElementById('guidedNextBtn');
+
+  function showStep() {
+    document.querySelectorAll('.guided-highlight').forEach(el =>
+      el.classList.remove('guided-highlight')
+    );
+
+    const current = steps[step];
+    const targets = document.querySelectorAll(current.selector);
+
+    if (!targets.length) return;
+
+    const target = targets[0];
+    target.classList.add('guided-highlight');
+
+    const scrollTarget = current.scrollTo ? document.querySelector(current.scrollTo) : target;
+
+    scrollTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    setTimeout(() => {
+      const rect = target.getBoundingClientRect();
+      const top = window.scrollY + rect.bottom + 12;
+      const left = window.scrollX + rect.left;
+
+      overlay.style.top = `${top}px`;
+      overlay.style.left = `${left}px`;
+      overlay.style.display = 'block';
+
+      msgBox.textContent = current.message;
+      nextBtn.textContent = step === steps.length - 1 ? 'Finish' : 'Next';
+    }, 400);
+  }
+
+  nextBtn.onclick = () => {
+    step++;
+    if (step < steps.length) {
+      showStep();
+    } else {
+      overlay.style.display = 'none';
+      document.querySelectorAll('.guided-highlight').forEach(el =>
+        el.classList.remove('guided-highlight')
+      );
+    }
+  };
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && overlay.style.display === 'block') {
+      nextBtn.click();
+    }
+  });
+
+  showStep();
+}
+
+// 🎓 When user clicks "Student Info" button
+function showStudentSection() {
+  document.body.classList.remove('show-button'); // show everything
+  renderCards(studentsData); // show student cards
+}
+
+
+document.getElementById('password').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') {
+    loginUser();
+  }
+});
+const fuse = new Fuse(studentsData, {
+  keys: ['name', 'englishName'],
+  threshold: 0.4, // allow some typos; 0.0 = exact, 1.0 = everything matches
+  ignoreLocation: true
+});
+
+   function renderCards(data) {
+      const cardsWrapper = document.getElementById('cardsWrapper');
+      const notFound = document.getElementById('notFoundMessage');
+      cardsWrapper.innerHTML = '';
+      if (data.length === 0) {
+        notFound.style.display = 'block';
+        return;
+      } else {
+        notFound.style.display = 'none';
+      }
+      data.forEach((student) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="${student.imageUrl}" alt="${student.name}">
+          <h3>${student.name}</h3>
+          <p>Age: ${student.age}</p>
+          <p>Gender: ${student.gender}</p>
+        `;
+        card.innerHTML = `
+  <img src="${student.imageUrl}" alt="${student.name}">
+  <h3>
+    ${student.name}
+    <button class="speak-btn" onclick="speakName('${student.englishName}', event)">🔊</button>
+  </h3>
+  <p>Age: ${student.age}</p>
+  <p>Gender: ${student.gender}</p>
+`;
+
+        function togglePin(id, event) {
+  event.stopPropagation(); // Prevent card flip
+
+  const student = studentsData.find(s => s.id === id);
+  student.pinned = !student.pinned;
+
+  renderCards(studentsData); // Refresh with updated star
+}
+function speakName(name, event) {
+  event.stopPropagation(); // avoid triggering card flip
+  const msg = new SpeechSynthesisUtterance(name);
+  msg.lang = 'en-US'; // set language for pronunciation
+  speechSynthesis.speak(msg);
+}
+
+
+        card.addEventListener('click', () => {
+          card.classList.toggle('show-image');
+        });
+        cardsWrapper.appendChild(card);
+      });
+    }
+
+
+
+    let currentIndex = 0;
+
+    window.onload = () => {
+      renderCards(studentsData);
+    };
+
+    function generateInfoText(student) {
+      return `<span>ሙሉ ስም: ${student.name}</span><br><span>ዕድሜ: ${student.age}</span><br><span>ፆታ: ${student.gender}</span>`;
+    }
+   document.getElementById('searchInput').addEventListener('input', function(event) {
+  performSearch();
+});
+
+    
+
+    function toggleCard(cardContainer, imageUrl, infoText) {
+      const front = cardContainer.querySelector('.card-front');
+      const info = cardContainer.querySelector('.info');
+      
+document.querySelectorAll('.card-container').forEach(card => {
+        if (card !== cardContainer) {
+          card.classList.remove('flipped');
+          card.querySelector('.info').style.display = 'none';
+        }
+      });
+
+      if (cardContainer.classList.contains('flipped')) {
+        cardContainer.classList.remove('flipped');
+        info.style.display = 'none';
+      } else {
+        cardContainer.classList.add('flipped');
+        front.style.backgroundImage = `url('${imageUrl}')`;
+        info.innerHTML = infoText;
+        info.style.display = 'block';
+      }
+    }
+
+    function renderCards(data) {
+      const cardsWrapper = document.getElementById('cardsWrapper');
+      const notFound = document.getElementById('notFoundMessage');
+      cardsWrapper.innerHTML = '';
+      
+
+      if (data.length === 0) {
+        notFound.style.display = 'block';
+        return;
+      } else {
+        notFound.style.display = 'none';
+      }
+
+      data.forEach((student, index) => {
+        const cardContainer = document.createElement('div');
+        cardContainer.className = 'card-container';
+        cardContainer.setAttribute('data-index', index);
+        cardContainer.onclick = () => {
+          currentIndex = index;
+          toggleCard(cardContainer, student.imageUrl, generateInfoText(student));
+        };
+        cardContainer.innerHTML = `
+          <div class="info"></div>
+          <div class="card card-back"></div>
+          <div class="card card-front"></div>
+          <div class="card-number">${student.id}</div>
+        `;
+        cardsWrapper.appendChild(cardContainer);
+      });
+    }
+function performSearch() {
+  const input = document.getElementById('searchInput').value.trim().toLowerCase();
+
+  if (!input) {
+    renderCards(studentsData);
+    return;
+  }
+
+  const results = fuse.search(input);
+  const filtered = results.map(result => result.item);
+
+  renderCards(filtered);
+}
+
+
+  
+    function sortBy(field) {
+  const sorted = [...studentsData].sort((a, b) => {
+    if (field === 'age') return a.age - b.age;
+    if (field === 'name') return a.name.localeCompare(b.name);
+    if (field === 'gender') return a.gender.localeCompare(b.gender);
+    return 0;
+  });
+  renderCards(sorted);
+}
+
+
+  
+  // Inside renderCards
+const highlightedName = student.name.replace(
+  new RegExp(input, 'gi'),
+  match => `<mark>${match}</mark>`
+);
+function filterBy(gender) {
+  const filtered = studentsData.filter(s =>
+    gender === 'male' ? s.gender === 'ወንድ' : s.gender === 'ሴት'
+  );
+  renderCards(filtered);
+}
+
+function resetFilters() {
+  renderCards(studentsData);
+}
+
+</script>
+</html>
